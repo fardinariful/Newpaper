@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import Leftnavbar from "./Leftnavbar";
 import Navbar from "./Navbar";
 import Rightnavbar from "./Rightnavbar";
@@ -10,9 +11,10 @@ const Home = () => {
                 <aside className="left col-span-3">
                     <Leftnavbar></Leftnavbar>
                 </aside>
-                <section className=" col-span-6">main content</section>
+                <section className=" col-span-6">
+                    <Outlet></Outlet>
+                </section>
                 <aside className="col-span-3">
-                    
                     <Rightnavbar></Rightnavbar>
                 </aside>
             </div>
