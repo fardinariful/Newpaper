@@ -1,12 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import profile from "../assets/user.png"
 import { useContext } from "react";
 import { Authcontext } from "../Provider/Authprovider";
 const Navbar = () => {
-  const {user}=useContext(Authcontext);
+  const {user,logout}=useContext(Authcontext);
+  const link= <>
+  <li><NavLink to='/'>Home</NavLink></li>
+  <li><NavLink to='/career'>Career</NavLink></li>
+  <li><NavLink to='/about'>About</NavLink></li>
+
+  </>
     return (
         <div className="navbar bg-base-100 w-11/12 mx-auto">
-          <div>{user && user.name}</div>
+          <div>{user && user.email}</div>
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -26,23 +32,23 @@ const Navbar = () => {
       <ul
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li><a>Home</a></li>
-        <li><a>About</a></li>
-        <li><a>Career</a></li>
+        {link}
       </ul>
     </div>
     <a className="btn btn-ghost text-xl"></a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-      <li><a>Home</a></li>
-      <li><a>About</a></li>
-      <li><a>Career</a></li>
+    {link}
     </ul>
   </div>
   <div className="navbar-end gap-2">
      <img src={profile} alt="" />
-     <Link to="/login"><a className="btn">Login</a></Link>
+     {
+      user && user?. email ? <button onClick={logout} className="btn">Logout</button> :
+      ( <Link to="/login"><a className="btn">Login</a></Link>)
+     }
+    
     
   </div>
 </div>
