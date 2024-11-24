@@ -10,6 +10,9 @@ import App from './App.jsx'
 import Root from './Components/Root.jsx';
 import Home from './Components/Home.jsx';
 import Categorynews from './Components/Categorynews.jsx';
+import Login from './Components/Login.jsx';
+import Registar from './Components/Registar.jsx';
+import Authprovider from './Provider/Authprovider.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,8 +30,17 @@ const router = createBrowserRouter([
             path:"/category/:id",
             element: <Categorynews></Categorynews>,
             loader:({params})=> fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`)
-          }
+          },
+          
         ]
+      },
+      {
+        path:'/login',
+        element:<Login></Login>,
+      },
+      {
+        path:'/register',
+        element:<Registar></Registar>
       },
       {
         path:"*",
@@ -40,6 +52,9 @@ const router = createBrowserRouter([
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <Authprovider>
     <RouterProvider router={router} />
+    </Authprovider>
+    
   </StrictMode>,
 )
