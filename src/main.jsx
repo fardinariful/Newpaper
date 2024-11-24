@@ -13,6 +13,7 @@ import Categorynews from './Components/Categorynews.jsx';
 import Login from './Components/Login.jsx';
 import Registar from './Components/Registar.jsx';
 import Authprovider from './Provider/Authprovider.jsx';
+import Newsdetails from './Components/Newsdetails.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
           },
           
         ]
+      },
+      {
+        path:'/singlenews/:id',
+        element:<Newsdetails></Newsdetails>,
+        loader:({params})=>fetch(`https://openapi.programming-hero.com/api/news/${params.id}`)
       },
       {
         path:'/login',

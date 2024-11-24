@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Singlecategorynew = (props={}) => {
     const {singlenews} =props || {};
@@ -52,7 +53,7 @@ const Singlecategorynew = (props={}) => {
             {singlenews.total_view} views
           </div>
         </div>
-        <button className="btn btn-primary btn-sm mt-2">Read More</button>
+        <Link to={`/singlenews/${singlenews._id}`} className="btn btn-primary btn-sm mt-2">Read More</Link>
       </div>
     </div>
   );
