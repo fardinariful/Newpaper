@@ -21,7 +21,7 @@ const Newsdetails = () => {
     <h2 className="card-title">{data.data[0]?.title}</h2>
     <p>{data.data[0]?.details}</p>
     <div className="card-actions">
-      <Link to={`/category/${data.data[0]?.category_id}`} className="btn btn-primary">Buy Now</Link>
+      <Link to={`/category/${data.data[0]?.category_id}`} className="btn btn-primary">Back to Home</Link>
     </div>
   </div>
 </div>
